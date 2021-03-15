@@ -6,4 +6,6 @@ before_install:
   - docker build -t ptulsyan/docker-react -f Dockerfile.dev . 
 
 scripts:
-  - docker run ptulsyan/docker-react npm run test -- --coverage
+  - docker run -e CI=true ptulsyan/docker-react npm run test
+
+language: generic
