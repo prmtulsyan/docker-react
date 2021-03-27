@@ -9,3 +9,17 @@ scripts:
   - docker run -e CI=true ptulsyan/docker-react npm run test -- --coverage
 
 language: generic
+
+deploy:
+
+  provider: elasticbeanstalk
+  region: "us-east-2"
+  app: "sample-docker-react"
+  env: "Sampledockerreact-env"
+  bucket_name: "elasticbeanstalk-us-east-2-925615142035"
+  bucket_path: "sample-docker-react"
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key:
+    secure: "$AWS_SECRET_KEY"
